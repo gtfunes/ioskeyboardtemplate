@@ -1,0 +1,27 @@
+# EditorConfig is awesome, wachin: http://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# General styles
+[*]
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_brace_style = 1TBS
+spaces_around_operators = true
+quote_type = auto
+
+# Indentation style specific for yml files
+[*.{yml}]
+indent_style = space
+
+# Trailing trimming style specific for md files
+[*.md]
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
