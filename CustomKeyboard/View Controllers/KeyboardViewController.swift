@@ -11,6 +11,16 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     @IBOutlet var nextKeyboardButton: UIButton!
     var isLandscape: Bool!
+    var heightConstraint: NSLayoutConstraint!
+    
+    func setHeightConstraint() {
+        if (self.heightConstraint == nil) {
+            let expandedHeight = self.isLandscape ? 170 : 230;
+
+            self.heightConstraint = NSLayoutConstraint.init(item: self.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: CGFloat(expandedHeight))
+            self.view.addConstraint(self.heightConstraint)
+        }
+    }
     
     func checkOrientation() {
         let screenSize = UIScreen.main.bounds.size
@@ -24,6 +34,12 @@ class KeyboardViewController: UIInputViewController {
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self .updateViewConstraints()
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,6 +71,12 @@ class KeyboardViewController: UIInputViewController {
         
         // Don't forget to check for full access if you need to
         // self.hasFullAccess
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.setHeightConstraint()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
