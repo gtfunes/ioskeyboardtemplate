@@ -17,7 +17,8 @@ class KeyboardViewController: UIInputViewController {
         if (self.heightConstraint == nil) {
             let expandedHeight = self.isLandscape ? 170 : 230;
 
-            self.heightConstraint = NSLayoutConstraint.init(item: self.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: CGFloat(expandedHeight))
+            self.heightConstraint = NSLayoutConstraint.init(item: self.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: CGFloat(expandedHeight))
+            self.heightConstraint.priority = .required
             self.view.addConstraint(self.heightConstraint)
         }
     }
