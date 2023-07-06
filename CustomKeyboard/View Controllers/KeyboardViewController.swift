@@ -17,7 +17,7 @@ class KeyboardViewController: UIInputViewController {
         let screenH = screenSize.height
         let screenW = screenSize.width
         
-        self.isLandscape = (screenH > screenW)
+        self.isLandscape = (screenW > screenH)
     }
     
     override func updateViewConstraints() {
